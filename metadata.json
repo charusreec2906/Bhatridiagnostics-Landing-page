@@ -1,0 +1,6 @@
+{
+  "name": "Bhartidiagnostics - Teleradiology Platform",
+  "description": "Empowering hospitals, clinics, and imaging centers with rapid, subspecialist radiology reporting and secure cloud DICOM integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
