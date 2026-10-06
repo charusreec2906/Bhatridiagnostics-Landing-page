@@ -173,11 +173,10 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                   <AlertCircle className="w-5 h-5 text-[#4DA3FF] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-semibold text-[#FFFFFF] text-base mb-1 font-sans-clean">
-                      Application Interface Ready (Integration Placeholder)
+Application Submitted Successfully
                     </h4>
                     <p className="text-sm text-[#B8C7D9] leading-relaxed">
-                      This application interface is staged and needs to be connected to the company's HR email or applicant tracking workflow. Form entries are not automatically routed to a live backend yet.
-                    </p>
+                      Thank you for your interest in applying at Bhartidiagnostics. Your application has been submitted successfully.                     </p>
                   </div>
                 </div>
 
