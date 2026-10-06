@@ -38,12 +38,6 @@ export const WHAT_WE_OFFER: OfferItem[] = [
     description: 'Timely plain radiography interpretations for trauma, chest, skeletal projections, and routine outpatient assessments.',
   },
   {
-    id: 'ultrasound-reporting',
-    iconName: 'Radio',
-    title: 'Ultrasound Reporting',
-    description: 'Structured interpretations for abdominal, pelvic, vascular Doppler, and small-parts sonographic examinations.',
-  },
-  {
     id: 'emergency-stat-reporting',
     iconName: 'AlertCircle',
     title: 'Emergency / STAT Reporting',
@@ -75,12 +69,6 @@ export const SERVICES: ServiceItem[] = [
     title: 'X-Ray Reporting',
     shortDesc: 'Dependable plain radiography interpretations for chest, emergency trauma, orthopedics, and routine screening.',
     imageKey: 'xray',
-  },
-  {
-    id: 'ultrasound-service',
-    title: 'Ultrasound Reporting',
-    shortDesc: 'Systematic evaluations for general abdomen, vascular duplex, obstetric scans, and superficial small parts.',
-    imageKey: 'ultrasound',
   },
   {
     id: 'stat-service',

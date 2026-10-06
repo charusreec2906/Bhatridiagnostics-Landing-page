@@ -3,7 +3,6 @@ import { SERVICES } from '../data/teleradiologyData';
 import kneeXRayImg from '../assets/images/knee_xray_scan_1789468926578.jpg';
 import ctImg from '../assets/images/ct_neuro_scan_1789468957971.jpg';
 import mriImg from '../assets/images/mri_axial_brain_1789469223835.jpg';
-import usImg from '../assets/images/ultrasound_kidney_1789468969448.jpg';
 import statImg from '../assets/images/stat_emergency_scan_1790146000337.jpg';
 import secondOpinionImg from '../assets/images/second_opinion_mri_1790146016487.jpg';
 import { ScrollReveal } from './ScrollReveal';
@@ -12,7 +11,6 @@ const SERVICE_IMAGES: Record<string, string> = {
   ct: ctImg,
   mri: mriImg,
   xray: kneeXRayImg,
-  ultrasound: usImg,
   stat: statImg,
   'second-opinion': secondOpinionImg,
 };
@@ -35,7 +33,7 @@ export const ServicesSection: React.FC = () => {
         </ScrollReveal>
 
         {/* 6 Services Cards Grid (3 columns on desktop, 2 on tablet, 1 on mobile) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-7">
           {SERVICES.map((service, idx) => {
             const displayImage = SERVICE_IMAGES[service.imageKey];
 
@@ -46,8 +44,7 @@ export const ServicesSection: React.FC = () => {
                 distance={18}
                 delayMs={(idx % 3) * 80}
                 durationMs={550}
-                className="h-full"
-              >
+className="h-full w-full sm:w-[calc(50%-14px)] lg:w-[calc(33.333%-19px)]"              >
                 <div
                   id={`service-card-${service.id}`}
                   className="h-full bg-[#102438] rounded-xl overflow-hidden border border-[#1C3B5E] hover:border-[#4DA3FF]/60 hover:shadow-lg transition-all duration-200 flex flex-col"

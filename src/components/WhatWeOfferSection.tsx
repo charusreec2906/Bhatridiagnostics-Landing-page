@@ -30,8 +30,7 @@ export const WhatWeOfferSection: React.FC = () => {
         </ScrollReveal>
 
         {/* 6 Cards Grid (3 columns on desktop, 2 on tablet, 1 on mobile) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {WHAT_WE_OFFER.map((item, idx) => {
+<div className="flex flex-wrap justify-center gap-6 items-stretch">          {WHAT_WE_OFFER.map((item, idx) => {
             const IconComponent = iconMap[item.iconName] || Activity;
             return (
               <ScrollReveal
@@ -40,12 +39,14 @@ export const WhatWeOfferSection: React.FC = () => {
                 distance={18}
                 delayMs={(idx % 3) * 80}
                 durationMs={550}
-                className="h-full"
-              >
+className={`h-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] ${
+  idx >= 3 ? 'md:h-[333px] lg:h-[333px]' : ''
+}`}             >
                 <div
                   id={`offer-card-${item.id}`}
-                  className="h-full bg-[#102438] hover:bg-[#142F4B] border border-[#1C3B5E] hover:border-[#4DA3FF]/50 rounded-xl p-7 sm:p-8 transition-all duration-200 flex flex-col justify-start shadow-xs hover:shadow-sm"
-                >
+                  className={`${
+  idx >= 3 ? 'h-[280px]' : 'h-full'
+} bg-[#102438] hover:bg-[#142F4B] border border-[#1C3B5E] hover:border-[#4DA3FF]/50 rounded-xl p-7 sm:p-8 transition-all duration-200 flex flex-col justify-start shadow-xs hover:shadow-sm`}                >
                   {/* Icon box */}
                   <div className="w-10 h-10 rounded-lg bg-[#0B1F33] text-[#4DA3FF] border border-[#1C3B5E] flex items-center justify-center mb-5">
                     <IconComponent className="w-5 h-5" />

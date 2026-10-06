@@ -91,14 +91,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   info@bhartidiagnostics.com
                 </a>
               </li>
-              <li>
-                <a
-                  href="mailto:careers@bhartidiagnostics.com"
-                  className="hover:text-[#4DA3FF] transition-colors"
-                >
-                  careers@bhartidiagnostics.com
-                </a>
-              </li>
             </ul>
           </div>
         </div>

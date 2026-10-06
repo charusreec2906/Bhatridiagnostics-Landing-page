@@ -5,13 +5,14 @@ import { ScrollReveal } from './ScrollReveal';
 export const CareersSection: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    position: 'Radiologist',
-    resumeFileName: '',
-    message: '',
-  });
+  fullName: '',
+  email: '',
+  phone: '',
+  position: 'Radiologist',
+  resumeFileName: '',
+  resumeFile: null as File | null,
+  message: '',
+});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Prevent background page from scrolling while the modal is open
@@ -43,19 +44,50 @@ export const CareersSection: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setFormData((prev) => ({
-        ...prev,
-        resumeFileName: e.target.files![0].name,
-      }));
-    }
-  };
+const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  if (e.target.files && e.target.files[0]) {
+    const file = e.target.files[0];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+    setFormData((prev) => ({
+      ...prev,
+      resumeFileName: file.name,
+      resumeFile: file,
+    }));
+  }
+};
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  try {
+    const data = new FormData();
+
+    data.append('fullName', formData.fullName);
+    data.append('email', formData.email);
+    data.append('phone', formData.phone);
+    data.append('position', formData.position);
+    data.append('message', formData.message);
+
+    if (formData.resumeFile) {
+      data.append('resume', formData.resumeFile);
+    }
+
+    const response = await fetch('http://localhost:3001/api/apply', {
+      method: 'POST',
+      body: data,
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || 'Application submission failed.');
+    }
+
     setIsSubmitted(true);
-  };
+  } catch (error) {
+    console.error('Application submission error:', error);
+    alert('Unable to submit application. Please try again.');
+  }
+};
 
   const openApplicationModal = () => {
     setIsModalOpen(true);
@@ -153,19 +185,6 @@ export const CareersSection: React.FC = () => {
                   <div className="text-xs text-[#B8C7D9]">
                     Candidate: <span className="font-medium text-[#FFFFFF]">{formData.fullName || 'Registered'}</span> ({formData.position})
                   </div>
-                  <a
-                    href={`mailto:careers@bhartidiagnostics.com?subject=Application for ${encodeURIComponent(
-                      formData.position
-                    )} - ${encodeURIComponent(formData.fullName)}&body=Name: ${encodeURIComponent(
-                      formData.fullName
-                    )}%0D%0APhone: ${encodeURIComponent(formData.phone)}%0D%0AEmail: ${encodeURIComponent(
-                      formData.email
-                    )}%0D%0A%0D%0A${encodeURIComponent(formData.message)}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#4DA3FF] hover:bg-[#3B94F0] text-[#0B1F33] text-xs font-semibold rounded-md transition"
-                  >
-                    <Mail className="w-3.5 h-3.5" />
-                    Email CV to careers@bhartidiagnostics.com
-                  </a>
                 </div>
 
                 <div className="flex items-center justify-between pt-2">
