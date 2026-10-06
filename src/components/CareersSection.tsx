@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Upload, AlertCircle, Mail, X } from 'lucide-react';
+import { Upload, CheckCircle2, Mail, X } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 export const CareersSection: React.FC = () => {
@@ -170,13 +170,12 @@ const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             {isSubmitted ? (
               <div className="bg-[#0B1F33] border border-[#1C3B5E] rounded-xl p-6 sm:p-8 text-left space-y-4">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 text-[#4DA3FF] shrink-0 mt-0.5" />
-                  <div>
+<CheckCircle2 className="w-5 h-5 text-[#4DA3FF] shrink-0 mt-0.5" />                  <div>
                     <h4 className="font-semibold text-[#FFFFFF] text-base mb-1 font-sans-clean">
 Application Submitted Successfully
                     </h4>
                     <p className="text-sm text-[#B8C7D9] leading-relaxed">
-                      Thank you for your interest in applying at Bhartidiagnostics. Your application has been submitted successfully.                     </p>
+                Your application has been submitted successfully.                     </p>
                   </div>
                 </div>
 
